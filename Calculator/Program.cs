@@ -39,12 +39,14 @@ internal class Calculator
 
         Console.WriteLine($"{message}");
 
-        string? inputUser = Console.ReadLine();
+        string? input = Console.ReadLine();
 
-        if (inputUser == null) return InputUser(message, true);
-        if (inputUser == string.Empty) return InputUser(message, true);
+        int number = 0;
+        bool success = int.TryParse(input, out number);
 
-        return int.Parse(inputUser);
+        if (success) return number;
+
+        return InputUser(message, true);
     }
 
     private static Int32 Calculate(Int32 number1, Int32 number2, Int32 option)
